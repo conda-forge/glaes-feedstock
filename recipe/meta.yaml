@@ -1,5 +1,5 @@
 {% set name = "glaes" %}
-{% set version = "1.1.6" %}
+{% set version = "1.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/FZJ-IEK3-VSA/glaes/archive/v{{ version }}.tar.gz
-  sha256: dd2ad7520445d5a62e734a746003ff260aa19df7068f194b6112695c0ea3f845
+  sha256: 7f77947abb80516d96f4d34d39d500e6f460abf37c1ed84699fe39a402b4e87a
 
 build:
   noarch: python
@@ -37,7 +37,7 @@ test:
     - glaes
   commands:
     - pip check
-    - python -m pytest 
+    - python -m pytest
   source_files:
     - .
   requires:
