@@ -12,14 +12,14 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 2
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - matplotlib
     - descartes
     - pandas
@@ -40,6 +40,7 @@ test:
   requires:
     - pytest
     - pytest-cov
+    - python {{ python_min }}
 
 about:
   home: https://github.com/FZJ-IEK3-VSA/glaes
