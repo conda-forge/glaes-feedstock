@@ -35,6 +35,7 @@ test:
   imports:
     - glaes
   commands:
+    - conda list
     - python -m pytest
   source_files:
     - .
