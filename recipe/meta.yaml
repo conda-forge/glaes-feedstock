@@ -1,5 +1,6 @@
 {% set name = "glaes" %}
-{% set version = "1.2.1" %}
+{% set version = "1.3.0" %}
+{% set python_min = "3.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,27 +8,28 @@ package:
 
 source:
   url: https://github.com/FZJ-IEK3-VSA/glaes/archive/v{{ version }}.tar.gz
-  sha256: 7f77947abb80516d96f4d34d39d500e6f460abf37c1ed84699fe39a402b4e87a
+  sha256: 4fe55a48ef7f367d0a6eaf86460601337136a57a72919a734a0180bb63c66f32
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - matplotlib
     - descartes
     - pandas
     - numpy <1.24
     - scipy
     - scikit-learn
-    - geokit =1.3.0
-    - gdal >2.4, <3.0
+    - geokit >=1.4.0
+    - gdal =3.4
 
 
 test:
@@ -40,6 +42,7 @@ test:
   requires:
     - pytest
     - pytest-cov
+    - python {{ python_min }}
 
 about:
   home: https://github.com/FZJ-IEK3-VSA/glaes
@@ -52,3 +55,5 @@ extra:
   recipe-maintainers:
     - julian-belina
     - tpelser
+    - chrisjwin
+    - phil-fzj
